@@ -1,4 +1,4 @@
-import { MessageData } from "../messagesApi";
+import { Message, MessageData } from "../messagesApi";
 
 export const identification = (payload: string) => ({
   type: "IDENTIFICATION",
@@ -8,7 +8,7 @@ export const identification = (payload: string) => ({
 export const loading = () => ({
   type: "LOADING",
 });
-export const success = (payload: any) => ({
+export const success = (payload: Message[]) => ({
   type: "SUCCESS",
   payload,
 });
@@ -16,7 +16,7 @@ export const sending = (newMessage: MessageData) => ({
   type: "SENDING",
   newMessage,
 });
-export const error = (error: Error) => ({
+export const errors = (error: Error) => ({
   type: "ERROR",
   error,
 });

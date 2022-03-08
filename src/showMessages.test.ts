@@ -27,7 +27,7 @@ describe("showMessages", () => {
     el?.remove();
   });
 
-  it("rendering messages", () => {
+  it("rendering messages", async () => {
     store.dispatch(success(messages));
     showMessages();
     const messageBox = el.querySelectorAll(

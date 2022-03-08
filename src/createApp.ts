@@ -3,9 +3,8 @@ import {
   getMessagesList,
   Message,
   observeWithEventSource,
-  sendMessage,
 } from "./messagesApi";
-import { loading, success, error, sending } from "./redux/actions";
+import { errors, loading, success } from "./redux/actions";
 import { store } from "./redux/createStore";
 import { sendMessag } from "./sendMessage";
 import { showMessages } from "./showMessages";
@@ -23,7 +22,7 @@ export class CreateApp {
       this.render();
     });
 
-    store.dispatch({ type: "lxclc" });
+    store.dispatch({ type: "start" });
   }
   async showStatus(status: string) {
     const chatStatus = this.el.querySelector(".chat-status") as HTMLElement;
@@ -57,19 +56,16 @@ export class CreateApp {
     }
   }
 
-  initChat() {
+  async initChat() {
     store.dispatch(loading());
     getMessagesList()
       .then((response: Message[]) => {
         store.dispatch(success(response.reverse().splice(0, 30)));
       })
       .catch((error) => {
-        store.dispatch(error(error));
+        store.dispatch(errors(error));
       });
-
-    observeWithEventSource((messages: Message[]) => {
-      store.dispatch(success(messages.reverse().splice(0, 30)));
-    });
+    // observeWithEventSource()
     sendMessag();
   }
 }

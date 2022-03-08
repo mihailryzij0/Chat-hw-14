@@ -36,11 +36,9 @@ describe("identificationUser", () => {
     ) as HTMLButtonElement;
     input.value = "name";
     button.dispatchEvent(new Event("click"));
-    const state = store.getState();
     const indifBox = el.querySelector(
       ".identification-box"
     ) as HTMLInputElement;
     expect(indifBox.style.display).toBe("none");
-    expect(state.name).toBe("name");
   });
 });

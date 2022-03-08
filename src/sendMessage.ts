@@ -1,5 +1,5 @@
 import { sendMessage } from "./messagesApi";
-import { sending } from "./redux/actions";
+import { sending, errors } from "./redux/actions";
 import { store } from "./redux/createStore";
 export function sendMessag() {
   const select = document.querySelector(
@@ -24,8 +24,13 @@ export function sendMessag() {
       name: store.getState().name as string,
       date: new Date(),
     };
-    sendMessage(mesaag);
-    store.dispatch(sending(mesaag));
+    sendMessage(mesaag)
+      .then(() => {
+        store.dispatch(sending(mesaag));
+      })
+      .catch((error) => {
+        store.dispatch(errors(error));
+      });
     input.value = "";
   });
 }
