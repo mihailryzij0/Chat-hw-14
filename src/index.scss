@@ -1,0 +1,71 @@
+body {
+  background-color: aqua;
+}
+
+.identification-box {
+  background-color: aliceblue;
+  padding: 50px;
+  position: absolute;
+  top: 40%;
+  left: 45%;
+  text-align: center;
+
+  &__input {
+    display: block;
+    margin-bottom: 30px;
+  }
+
+  &__button {
+    width: 100%;
+  }
+
+  &__label {
+    margin-bottom: 20px;
+  }
+}
+
+.chat {
+  max-width: 70%;
+  margin: 0 auto;
+  position: relative;
+  height: 98vh;
+}
+
+.chat-top {
+  height: 80%;
+  padding-left: 10%;
+  padding-right: 10%;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: aliceblue;
+}
+
+.chat-form {
+  display: flex;
+
+  &__message {
+    width: 100%;
+  }
+}
+
+.message-box {
+  margin: 20px;
+  padding: 10px;
+  border-radius: 20px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  max-width: max-content;
+  background-color: white;
+
+  &:nth-child(even) {
+    align-self: flex-end;
+  }
+}
